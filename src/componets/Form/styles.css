@@ -1,0 +1,77 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.containerForm {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    height: 80%;
+    width: 500px;
+    margin-left: 15rem;
+}
+
+.containerForm>h1 {
+    font-family: 'Ubuntu', sans-serif;
+    color: hsl(213, 96%, 18%);
+}
+
+.containerForm>h4 {
+    font-family: 'Ubuntu', sans-serif;
+    color: hsl(231, 11%, 63%);
+    font-size: 400;
+}
+
+.sectionInput {
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+    margin-top: 2rem;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.form>label {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+    font-family: 'Ubuntu', sans-serif;
+    color: hsl(213, 96%, 18%);
+    font-weight: 500;
+    font-size: 15px;
+}
+
+.form>label>input {
+    height: 40px;
+    border-radius: 8px;
+    border: 1px solid gray;
+    font-family: 'Ubuntu', sans-serif;
+    color: hsl(213, 96%, 18%);
+    font-weight: 500;
+    font-size: 18px;
+    margin-top: 0.3rem;
+}
+
+.form>label>input:focus {
+    border-color: hsl(213, 96%, 18%);
+}
+
+.button {
+    width: 120px;
+    height: 40px;
+    border-radius: 8px;
+    border: none;
+    background-color: hsl(213, 96%, 18%);
+    color: white;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    align-self: flex-end;
+    margin-top: 6rem;
+    cursor: pointer;
+}
