@@ -1,0 +1,115 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.containerAddOns {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    height: 85%;
+    width: 500px;
+    margin-left: 15rem;
+}
+
+.containerAddOns>h1 {
+    font-family: 'Ubuntu', sans-serif;
+    color: hsl(213, 96%, 18%);
+}
+
+.containerAddOns>h4 {
+    font-family: 'Ubuntu', sans-serif;
+    color: hsl(231, 11%, 63%);
+    font-size: 400;
+}
+
+.containerCheckbox {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 300px;
+    margin-top: 2rem;
+    gap: 1rem;
+}
+
+.sectionCheckbox {
+    border: 1px solid hsl(243, 100%, 62%);
+    border-radius: 8px;
+    display: flex;
+    height: 80px;
+    align-items: center;
+    width: 100%;
+}
+
+.sectionCheckbox>input {
+    margin-left: 2rem;
+    width: 20px;
+    height: 18px;
+}
+
+
+.labeladd {
+    display: flex;
+    flex-direction: column;
+    margin-left: 1rem;
+    width: 200px;
+}
+
+.titleadd {
+    font-family: 'Ubuntu', sans-serif;
+    color: hsl(213, 96%, 18%);
+    font-weight: 700;
+}
+
+.subtitleadd {
+    font-family: 'Ubuntu', sans-serif;
+    color: hsl(231, 11%, 63%);
+    font-size: 14px;
+}
+
+.price {
+    display: flex;
+    justify-content: flex-end;
+    color: hsl(243, 100%, 62%);
+    font-family: 'Ubuntu', sans-serif;
+    margin-left: 7rem;
+    font-weight: 500;
+    width: 100px;
+}
+
+.addSelected {
+    background-color: hsl(217, 100%, 97%);
+}
+
+.containerButtons {
+    display: flex;
+    justify-content: space-between;
+    height: 200px;
+    align-items: flex-end;
+}
+
+.back {
+    width: 120px;
+    height: 40px;
+    border-radius: 8px;
+    border: none;
+    background-color: white;
+    color: hsl(213, 96%, 18%);
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.next {
+    width: 120px;
+    height: 40px;
+    border-radius: 8px;
+    border: none;
+    background-color: hsl(213, 96%, 18%);
+    color: white;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+}
