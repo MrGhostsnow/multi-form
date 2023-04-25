@@ -1,5 +1,6 @@
 import { useState } from "react"
 import Form from "../Form"
+import Plans from "../Plans"
 import SideBar from "../SideBar"
 import "./styles.css"
 
@@ -17,6 +18,7 @@ function Card() {
             {showForm && (
                 <Form showForm={handleShowForm} />
             )}
+            <Plans />
         </div>
     )
 }
