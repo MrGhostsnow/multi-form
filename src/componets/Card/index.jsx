@@ -10,27 +10,36 @@ function Card() {
     const [showForm, setShowForm] = useState(true)
     const [goBack, setGoBack] = useState(false)
     const [goNext, setGoNext] = useState(false)
+    const [pricePeriod, setPricePeriod] = useState(true)
+    const [planOfChoice, setPlanOfChoice] = useState()
+    const [addOfChoice, setAddOfChoice] = useState()
 
     function handleShowForm(dados) {
         setShowForm(dados);
         setGoBack(false)
         setGoNext(false)
-        console.log("showform", showForm)
     }
 
     function handleGoBack(back) {
         setGoBack(back)
         setGoNext(prev => !prev)
-        console.log("goback", goBack)
     }
 
     function handleNext(next) {
         setGoNext(next)
         setGoBack(false)
         setShowForm(false)
-        console.log("form", showForm)
-        console.log("back", goBack)
     }
+
+    function handelChangePrice(price) {
+        setPricePeriod(price)
+    }
+
+
+    console.log("plan", planOfChoice)
+    console.log("add", addOfChoice)
+
+
 
 
 
@@ -44,12 +53,16 @@ function Card() {
                     {!goNext ? (
                         <Plans
                             goBack={handleGoBack}
-                            goNext={handleNext} />
+                            goNext={handleNext}
+                            pricePeriod={handelChangePrice}
+                            planOfChoice={(plan) => setPlanOfChoice(plan)} />
 
                     ) :
 
                         <AddOns
-                            goBack={handleGoBack} />}
+                            goBack={handleGoBack}
+                            selectPrice={pricePeriod}
+                            addOfChoice={(add) => setAddOfChoice(add)} />}
                 </>
             )}
         </div>

@@ -2,7 +2,7 @@ import './styles.css'
 import Arcade from '../../assets/icon-arcade.svg'
 import Advanced from '../../assets/icon-advanced.svg'
 import Pro from '../../assets/icon-pro.svg'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 function Plans(props) {
 
@@ -10,6 +10,7 @@ function Plans(props) {
     const [bg1, setBg1] = useState(false)
     const [bg2, setBg2] = useState(false)
     const [price, setPrice] = useState(false)
+    const selectedPlan = []
 
     function handleSelected() {
         if (!bg === true) {
@@ -40,6 +41,23 @@ function Plans(props) {
         props.goNext(true);
     }
 
+    function handlePeriod() {
+        props.pricePeriod(price)
+    }
+
+    const service = [
+        { type: 'Arcade', price: `${price ? '+$90/mo' : '+9/yr'}` },
+        { type: 'Advanced', price: `${price ? '+$120/mo' : '+12/yr'}` },
+        { type: 'Pro', price: `${price ? '+$150/mo' : '+15/yr'}` }
+    ];
+
+
+    const handleClick = (e) => {
+        selectedPlan.push(service[e])
+        props.planOfChoice(selectedPlan)
+    }
+
+
 
 
     return (
@@ -52,10 +70,13 @@ function Plans(props) {
             </h4>
             <div className='sectionPlans'>
                 <div
-                    onClick={() => {
+
+                    onClick={(e) => {
                         setBg(prev => !prev)
                         handleSelected()
+                        handleClick(0)
                     }}
+
                     className={bg ? 'plans plansSelected' : 'plans'}>
                     <img src={Arcade} alt="" />
                     <div className='labelPlans'>
@@ -67,6 +88,7 @@ function Plans(props) {
                     onClick={() => {
                         setBg1(prev => !prev)
                         handleSelectedBg1()
+                        handleClick(1)
                     }}
                     className={bg1 ? 'plans plansSelected' : 'plans'}>
                     <img src={Advanced} alt="" />
@@ -76,9 +98,11 @@ function Plans(props) {
                     </div>
                 </div>
                 <div
+                    value={2}
                     onClick={() => {
                         setBg2(prev => !prev)
                         handleSelectedBg2()
+                        handleClick(2)
                     }}
                     className={bg2 ? 'plans plansSelected' : 'plans'}>
                     <img src={Pro} alt="" />
@@ -91,7 +115,10 @@ function Plans(props) {
             <div className='selectPeriod'>
                 <label class="switch">
                     <input
-                        onClick={() => setPrice(prev => !prev)} type="checkbox" />
+                        onClick={() => {
+                            setPrice(prev => !prev)
+                            handlePeriod()
+                        }} type="checkbox" />
                     <span class="slider round"></span>
                 </label>
             </div>
