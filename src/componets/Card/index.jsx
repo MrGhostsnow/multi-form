@@ -3,6 +3,7 @@ import AddOns from "../AddOns"
 import Form from "../Form"
 import Plans from "../Plans"
 import SideBar from "../SideBar"
+import Summary from "../Summary"
 import "./styles.css"
 
 function Card() {
@@ -10,6 +11,7 @@ function Card() {
     const [showForm, setShowForm] = useState(true)
     const [goBack, setGoBack] = useState(false)
     const [goNext, setGoNext] = useState(false)
+    const [goSummary, setGoSummary] = useState(false)
     const [pricePeriod, setPricePeriod] = useState(true)
     const [planOfChoice, setPlanOfChoice] = useState()
     const [addOfChoice, setAddOfChoice] = useState()
@@ -31,12 +33,19 @@ function Card() {
         setShowForm(false)
     }
 
+    function handleGoSummary(summary) {
+        setGoSummary(summary)
+        setGoBack(false)
+        setShowForm(false)
+        setGoNext(false)
+    }
+
     function handelChangePrice(price) {
         setPricePeriod(price)
     }
 
 
-    console.log("plan", planOfChoice)
+    // console.log("plan", planOfChoice)
     console.log("add", addOfChoice)
 
 
@@ -57,14 +66,28 @@ function Card() {
                             pricePeriod={handelChangePrice}
                             planOfChoice={(plan) => setPlanOfChoice(plan)} />
 
-                    ) :
+                    ) : (
 
-                        <AddOns
-                            goBack={handleGoBack}
-                            selectPrice={pricePeriod}
-                            addOfChoice={(add) => setAddOfChoice(add)} />}
+                        <>
+                            {!goSummary ? (
+                                <AddOns
+                                    goBack={handleGoBack}
+                                    goSummary={handleGoSummary}
+                                    selectPrice={pricePeriod}
+                                    addOfChoice={(add) => setAddOfChoice(add)} />
+                            ) :
+                                (
+                                    <Summary
+                                        choosePlan={planOfChoice}
+                                        chooseAdd={addOfChoice} />
+                                )}
+                        </>
+                    )}
+
                 </>
-            )}
+            )
+
+            }
         </div>
     )
 }
