@@ -5,10 +5,27 @@ function Summary(props) {
 
     const [plan, setPlan] = useState([props.choosePlan])
     const [add, setAdd] = useState([props.chooseAdd])
+    const [period, setPeriod] = useState(props.selectPrice)
 
+    function handleBackAdd() {
+        props.goSummary(false);
+    }
 
-    console.log("choicep", plan)
-    console.log("choicea", add)
+    function handleFinish() {
+        props.acknowledgment(true);
+    }
+
+    const pricePlan = plan.map(function (elemento) {
+        return elemento[0].price;
+    });
+
+    const priceAdd = add.map(function (elemento) {
+        return elemento[0].price;
+    });
+
+    const pricePlanInt = (parseInt(pricePlan[0]))
+    const priceAddInt = (parseInt(priceAdd[0]))
+
 
     return (
         <div className='containerSummary'>
@@ -33,13 +50,17 @@ function Summary(props) {
                 {add.map((add) => (
                     <div className='serviceDetails'>
                         <p>{add[0].type}</p>
-                        <span>{add[0].price}</span>
+                        <span>+{add[0].price}</span>
                     </div>
                 ))}
             </div>
             <div className='total'>
-                <p>Total</p>
-                <span></span>
+                <p>Total {period ? '(per month)' : '(per year)'}</p>
+                <span>{`+$${pricePlanInt + priceAddInt} ${period ? '/mo' : '/yr'}`}</span>
+            </div>
+            <div className='containerButtons'>
+                <button onClick={() => handleBackAdd()} className='back'>Go Back</button>
+                <button onClick={() => handleFinish()} className='next'>Confirm</button>
             </div>
         </div>
     )

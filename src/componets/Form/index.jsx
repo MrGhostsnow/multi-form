@@ -1,10 +1,30 @@
+import { useState } from 'react';
 import './styles.css'
 
 function Form(props) {
 
+    const [name, setName] = useState('')
+    const [email, setEmail] = useState('')
+    const [phone, setPhone] = useState('')
 
     function handleClick() {
-        props.showForm(false);
+        if (name && email && phone !== '') {
+            props.showForm(false);
+        } else {
+            window.alert('Preencha todos os campos')
+        }
+    }
+
+    const handleChangeName = (e) => {
+        setName(e.target.value)
+    }
+
+    const handleChangeEmail = (e) => {
+        setEmail(e.target.value)
+    }
+
+    const handleChangePhone = (e) => {
+        setPhone(e.target.value)
     }
 
     return (
@@ -19,15 +39,15 @@ function Form(props) {
                 <form className='form'>
                     <label>
                         Name
-                        <input required type="text" name="name" />
+                        <input onChange={handleChangeName} type="text" name="name" value={name} />
                     </label>
                     <label>
                         Email Address
-                        <input required type='email' name='email' />
+                        <input onChange={handleChangeEmail} type='email' name='email' value={email} />
                     </label>
                     <label>
                         Phone Number
-                        <input required type='phone' name='phone' />
+                        <input onChange={handleChangePhone} type='phone' name='phone' value={phone} />
                     </label>
                     <input onClick={(e) => {
                         e.preventDefault()

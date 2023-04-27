@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+.containerAcknowledgment {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 85%;
+    width: 500px;
+    margin-left: 15rem;
+}
+
+.containerAcknowledgment>img {
+    height: 65px;
+    margin-bottom: 2rem;
+    margin-top: -3rem;
+}
+
+.containerAcknowledgment>h1 {
+    font-family: 'Ubuntu', sans-serif;
+    color: hsl(213, 96%, 18%);
+    margin-bottom: 1rem;
+}
+
+.containerAcknowledgment>p {
+    font-family: 'Ubuntu', sans-serif;
+    color: hsl(231, 11%, 63%);
+    font-size: 400;
+    width: 90%;
+    line-height: 22px;
+}

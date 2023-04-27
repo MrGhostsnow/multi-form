@@ -10,6 +10,7 @@ function Plans(props) {
     const [bg1, setBg1] = useState(false)
     const [bg2, setBg2] = useState(false)
     const [price, setPrice] = useState(false)
+    const [haslength, setHasLength] = useState(0)
     const selectedPlan = []
 
     function handleSelected() {
@@ -37,24 +38,30 @@ function Plans(props) {
         props.goBack(true);
     }
 
-    function handleClickGoNext() {
-        props.goNext(true);
-    }
 
     function handlePeriod() {
         props.pricePeriod(price)
     }
 
     const service = [
-        { type: 'Arcade', price: `${price ? '+$90/mo' : '+9/yr'}` },
-        { type: 'Advanced', price: `${price ? '+$120/mo' : '+12/yr'}` },
-        { type: 'Pro', price: `${price ? '+$150/mo' : '+15/yr'}` }
+        { type: 'Arcade', price: `${price ? '+90/yr' : '+9/mo'}` },
+        { type: 'Advanced', price: `${price ? '+120/yr' : '+12/mo'}` },
+        { type: 'Pro', price: `${price ? '+150/yr' : '+15/mo'}` }
     ];
 
 
     const handleClick = (e) => {
         selectedPlan.push(service[e])
         props.planOfChoice(selectedPlan)
+        setHasLength(selectedPlan.length)
+    }
+
+    function handleClickGoNext() {
+        if (haslength > 0) {
+            props.goNext(true);
+        } else {
+            window.alert('Escolha uma opção')
+        }
     }
 
 

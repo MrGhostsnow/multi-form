@@ -1,4 +1,5 @@
 import { useState } from "react"
+import Acknowledgment from "../Acknowledgment"
 import AddOns from "../AddOns"
 import Form from "../Form"
 import Plans from "../Plans"
@@ -12,6 +13,7 @@ function Card() {
     const [goBack, setGoBack] = useState(false)
     const [goNext, setGoNext] = useState(false)
     const [goSummary, setGoSummary] = useState(false)
+    const [acknowledgment, setAcknowledgment] = useState(false)
     const [pricePeriod, setPricePeriod] = useState(true)
     const [planOfChoice, setPlanOfChoice] = useState()
     const [addOfChoice, setAddOfChoice] = useState()
@@ -37,56 +39,76 @@ function Card() {
         setGoSummary(summary)
         setGoBack(false)
         setShowForm(false)
-        setGoNext(false)
+        setGoNext(true)
     }
 
     function handelChangePrice(price) {
         setPricePeriod(price)
     }
 
+    function handleBackAdd(backadd) {
+        setGoSummary(backadd)
+        // setGoBack(false)
+        // setShowForm(false)
+        // setGoNext(true)
+    }
 
-    // console.log("plan", planOfChoice)
-    console.log("add", addOfChoice)
+    function handlegoAcknowledgment(finish) {
+        setAcknowledgment(true)
+        setShowForm(false)
+        setGoBack(true)
+    }
 
-
+    console.log("back", goBack)
+    console.log("next", goNext)
+    console.log("summ", goSummary)
 
 
 
     return (
         <div className="card">
             <SideBar />
-            {showForm || goBack ? (
-                <Form showForm={handleShowForm} />
-            ) : (
+            {!acknowledgment ? (
                 <>
-                    {!goNext ? (
-                        <Plans
-                            goBack={handleGoBack}
-                            goNext={handleNext}
-                            pricePeriod={handelChangePrice}
-                            planOfChoice={(plan) => setPlanOfChoice(plan)} />
-
+                    {showForm || goBack ? (
+                        <Form showForm={handleShowForm} />
                     ) : (
-
                         <>
-                            {!goSummary ? (
-                                <AddOns
+                            {!goNext ? (
+                                <Plans
                                     goBack={handleGoBack}
-                                    goSummary={handleGoSummary}
-                                    selectPrice={pricePeriod}
-                                    addOfChoice={(add) => setAddOfChoice(add)} />
-                            ) :
-                                (
-                                    <Summary
-                                        choosePlan={planOfChoice}
-                                        chooseAdd={addOfChoice} />
-                                )}
+                                    goNext={handleNext}
+                                    pricePeriod={handelChangePrice}
+                                    planOfChoice={(plan) => setPlanOfChoice(plan)} />
+
+                            ) : (
+
+                                <>
+                                    {!goSummary ? (
+                                        <AddOns
+                                            goBack={handleGoBack}
+                                            goSummary={handleGoSummary}
+                                            selectPrice={pricePeriod}
+                                            addOfChoice={(add) => setAddOfChoice(add)} />
+                                    ) :
+                                        (
+                                            <Summary
+                                                choosePlan={planOfChoice}
+                                                chooseAdd={addOfChoice}
+                                                selectPrice={pricePeriod}
+                                                goSummary={handleBackAdd}
+                                                acknowledgment={handlegoAcknowledgment}
+                                            />
+                                        )}
+                                </>
+                            )}
+
                         </>
-                    )}
-
+                    )
+                    }
                 </>
-            )
-
+            ) :
+                <Acknowledgment />
             }
         </div>
     )

@@ -4,20 +4,17 @@ import './styles.css'
 function AddOns(props) {
 
     const [period, setPeriod] = useState(props.selectPrice)
+    const [haslength, setHasLength] = useState(0)
     const chosseservice = []
 
     function handleBackPlans() {
         props.goBack(false);
     }
 
-    function handleGoNext() {
-        props.goSummary(true);
-    }
-
     const service = [
-        { type: 'Online service', price: `${period ? '+$1/mo' : '+10/yr'}` },
-        { type: 'Larger storage', price: `${period ? '+$2/mo' : '+20/yr'}` },
-        { type: 'Customizable Profile', price: `${period ? '+$1/mo' : '+10/yr'}` }
+        { type: 'Online service', price: `${period ? '1/mo' : '10/yr'}` },
+        { type: 'Larger storage', price: `${period ? '2/mo' : '20/yr'}` },
+        { type: 'Customizable Profile', price: `${period ? '2/mo' : '20/yr'}` }
     ];
 
 
@@ -43,13 +40,9 @@ function AddOns(props) {
         if (!isChecked === true) {
             let services = (service[e.target.value])
             chosseservice.push(services)
+            setHasLength(chosseservice.length)
             handleSelectedAdd()
         }
-        // else if (!isChecked2 === true) {
-        //     let services = (service[e.target.value])
-        //     chosseservice.push(services)
-        //     handleSelectedAdd()
-        // }
         else {
             chosseservice.push('')
             handleSelectedAdd()
@@ -60,6 +53,7 @@ function AddOns(props) {
         if (!isChecked1 === true) {
             let services = (service[e.target.value])
             chosseservice.push(services)
+            setHasLength(chosseservice.length)
             handleSelectedAdd()
         } else {
             chosseservice.push('')
@@ -71,6 +65,7 @@ function AddOns(props) {
         if (!isChecked2 === true) {
             let services = (service[e.target.value])
             chosseservice.push(services)
+            setHasLength(chosseservice.length)
             handleSelectedAdd()
         } else {
             chosseservice.push('')
@@ -84,7 +79,14 @@ function AddOns(props) {
         props.addOfChoice(chosseservice);
     }
 
-    console.log(isChecked)
+    function handleGoNext() {
+        if (haslength > 0) {
+            props.goSummary(true);
+        } else {
+            window.alert('Escolha uma opção')
+        }
+    }
+
     // console.log(isChecked1)
     // console.log(isChecked2)
 
@@ -105,7 +107,7 @@ function AddOns(props) {
                         <label className='titleadd' for="scales">Online service</label>
                         <label className='subtitleadd' for="scales">Access to multiplayer games</label>
                     </div>
-                    <label className='price' for="scales">{period ? '+$1/mo' : '+10/yr'}</label>
+                    <label className='price' for="scales">{period ? '+$1/mo' : '+$10/yr'}</label>
                 </div>
                 <div className='sectionCheckbox'>
                     <input onClick={handleClick1} onChange={handleChange1} type="checkbox" id="scales" name="scales" value={1} />
@@ -113,7 +115,7 @@ function AddOns(props) {
                         <label className='titleadd' for="scales">Larger storage</label>
                         <label className='subtitleadd' for="scales">Extra 1TB of cloud save</label>
                     </div>
-                    <label className='price' for="scales">{period ? '+$2/mo' : '+20/yr'}</label>
+                    <label className='price' for="scales">{period ? '+$2/mo' : '+$20/yr'}</label>
                 </div>
                 <div className='sectionCheckbox'>
                     <input onClick={handleClick2} onChange={handleChange2} type="checkbox" id="scales" name="scales" value={2} />
@@ -121,7 +123,7 @@ function AddOns(props) {
                         <label className='titleadd' for="scales">Customizable Profile</label>
                         <label className='subtitleadd' for="scales">Custom theme on your profile</label>
                     </div>
-                    <label className='price' for="scales">{period ? '+$2/mo' : '+20/yr'}</label>
+                    <label className='price' for="scales">{period ? '+$2/mo' : '+$20/yr'}</label>
                 </div>
             </div>
             <div className='containerButtons'>
