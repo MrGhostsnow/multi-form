@@ -61,9 +61,6 @@ function Card() {
 
     function handleBackAdd(backadd) {
         setGoSummary(backadd)
-        // setGoBack(false)
-        // setShowForm(false)
-        // setGoNext(true)
     }
 
     function handlegoAcknowledgment(finish) {
@@ -72,9 +69,7 @@ function Card() {
         setGoBack(true)
     }
 
-    console.log("back", goBack)
-    console.log("next", goNext)
-    console.log("summ", goSummary)
+
 
 
 
