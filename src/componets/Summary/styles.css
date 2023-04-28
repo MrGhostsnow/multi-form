@@ -23,6 +23,22 @@
     color: hsl(231, 11%, 63%);
 }
 
+@media screen and (max-width: 768px) {
+    .containerSummary {
+        width: 400px;
+        margin-left: 18rem;
+    }
+}
+
+@media screen and (max-width: 542px) {
+    .containerSummary {
+        width: 300px;
+        margin-left: 0rem;
+        align-items: center;
+        text-align: center;
+    }
+}
+
 .sectionDetails {
     border-radius: 8px;
     height: 200px;
@@ -32,6 +48,12 @@
     align-items: center;
     gap: 2rem;
     background-color: hsl(217, 100%, 97%);
+}
+
+@media screen and (max-width: 542px) {
+    .sectionDetails {
+        width: 300px;
+    }
 }
 
 .sectionTitle {
@@ -95,6 +117,13 @@
     font-family: 'Ubuntu', sans-serif;
     font-size: 18px;
     font-weight: 700;
+}
+
+@media screen and (max-width: 542px) {
+    .total {
+        width: 260px;
+        margin-left: 0.5rem;
+    }
 }
 
 .divider {

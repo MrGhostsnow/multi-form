@@ -34,3 +34,19 @@
     width: 90%;
     line-height: 22px;
 }
+
+@media screen and (max-width: 768px) {
+    .containerAcknowledgment {
+        width: 400px;
+        margin-left: 18rem;
+    }
+}
+
+@media screen and (max-width: 542px) {
+    .containerAcknowledgment {
+        width: 300px;
+        margin-left: 0rem;
+        align-items: center;
+        text-align: center;
+    }
+}

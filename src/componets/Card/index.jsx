@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Acknowledgment from "../Acknowledgment"
 import AddOns from "../AddOns"
 import Form from "../Form"
@@ -17,6 +17,19 @@ function Card() {
     const [pricePeriod, setPricePeriod] = useState(true)
     const [planOfChoice, setPlanOfChoice] = useState()
     const [addOfChoice, setAddOfChoice] = useState()
+
+
+    const [width, setWidth] = useState(window.innerWidth);
+
+    useEffect(() => {
+        function handleResize() {
+            setWidth(window.innerWidth);
+        }
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, [width]);
+
+    const mobile = (width <= 542);
 
     function handleShowForm(dados) {
         setShowForm(dados);
@@ -66,51 +79,105 @@ function Card() {
 
 
     return (
-        <div className="card">
-            <SideBar />
-            {!acknowledgment ? (
-                <>
-                    {showForm || goBack ? (
-                        <Form showForm={handleShowForm} />
-                    ) : (
+        <>
+            {!mobile ? (
+                <div className="card">
+                    <SideBar />
+                    {!acknowledgment ? (
                         <>
-                            {!goNext ? (
-                                <Plans
-                                    goBack={handleGoBack}
-                                    goNext={handleNext}
-                                    pricePeriod={handelChangePrice}
-                                    planOfChoice={(plan) => setPlanOfChoice(plan)} />
-
+                            {showForm || goBack ? (
+                                <Form showForm={handleShowForm} />
                             ) : (
-
                                 <>
-                                    {!goSummary ? (
-                                        <AddOns
+                                    {!goNext ? (
+                                        <Plans
                                             goBack={handleGoBack}
-                                            goSummary={handleGoSummary}
-                                            selectPrice={pricePeriod}
-                                            addOfChoice={(add) => setAddOfChoice(add)} />
-                                    ) :
-                                        (
-                                            <Summary
-                                                choosePlan={planOfChoice}
-                                                chooseAdd={addOfChoice}
-                                                selectPrice={pricePeriod}
-                                                goSummary={handleBackAdd}
-                                                acknowledgment={handlegoAcknowledgment}
-                                            />
-                                        )}
-                                </>
-                            )}
+                                            goNext={handleNext}
+                                            pricePeriod={handelChangePrice}
+                                            planOfChoice={(plan) => setPlanOfChoice(plan)} />
 
+                                    ) : (
+
+                                        <>
+                                            {!goSummary ? (
+                                                <AddOns
+                                                    goBack={handleGoBack}
+                                                    goSummary={handleGoSummary}
+                                                    selectPrice={pricePeriod}
+                                                    addOfChoice={(add) => setAddOfChoice(add)} />
+                                            ) :
+                                                (
+                                                    <Summary
+                                                        choosePlan={planOfChoice}
+                                                        chooseAdd={addOfChoice}
+                                                        selectPrice={pricePeriod}
+                                                        goSummary={handleBackAdd}
+                                                        acknowledgment={handlegoAcknowledgment}
+                                                    />
+                                                )}
+                                        </>
+                                    )}
+
+                                </>
+                            )
+                            }
                         </>
-                    )
+                    ) :
+                        <Acknowledgment />
                     }
-                </>
+                </div>
             ) :
-                <Acknowledgment />
+                <>
+                    <SideBar />
+                    <div className="card">
+
+                        {!acknowledgment ? (
+                            <>
+                                {showForm || goBack ? (
+                                    <Form showForm={handleShowForm} />
+                                ) : (
+                                    <>
+                                        {!goNext ? (
+                                            <Plans
+                                                goBack={handleGoBack}
+                                                goNext={handleNext}
+                                                pricePeriod={handelChangePrice}
+                                                planOfChoice={(plan) => setPlanOfChoice(plan)} />
+
+                                        ) : (
+
+                                            <>
+                                                {!goSummary ? (
+                                                    <AddOns
+                                                        goBack={handleGoBack}
+                                                        goSummary={handleGoSummary}
+                                                        selectPrice={pricePeriod}
+                                                        addOfChoice={(add) => setAddOfChoice(add)} />
+                                                ) :
+                                                    (
+                                                        <Summary
+                                                            choosePlan={planOfChoice}
+                                                            chooseAdd={addOfChoice}
+                                                            selectPrice={pricePeriod}
+                                                            goSummary={handleBackAdd}
+                                                            acknowledgment={handlegoAcknowledgment}
+                                                        />
+                                                    )}
+                                            </>
+                                        )}
+
+                                    </>
+                                )
+                                }
+                            </>
+                        ) :
+                            <Acknowledgment />
+                        }
+                    </div>
+                </>
             }
-        </div>
+
+        </>
     )
 }
 

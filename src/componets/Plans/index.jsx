@@ -44,9 +44,9 @@ function Plans(props) {
     }
 
     const service = [
-        { type: 'Arcade', price: `${price ? '+90/yr' : '+9/mo'}` },
-        { type: 'Advanced', price: `${price ? '+120/yr' : '+12/mo'}` },
-        { type: 'Pro', price: `${price ? '+150/yr' : '+15/mo'}` }
+        { type: 'Arcade', price: `${price ? '90/yr' : '9/mo'}` },
+        { type: 'Advanced', price: `${price ? '120/yr' : '12/mo'}` },
+        { type: 'Pro', price: `${price ? '150/yr' : '15/mo'}` }
     ];
 
 

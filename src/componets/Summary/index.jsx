@@ -40,9 +40,9 @@ function Summary(props) {
                     {plan.map((plan) => (
                         <>
                             <div className='titleDetails'>
-                                <p>{plan[0].type}</p>
+                                <p>{plan[0].type} {period ? '(Monthly)' : '(Yearly)'}</p>
                             </div>
-                            <span>{plan[0].price}</span>
+                            <span>+${plan[0].price}</span>
                         </>
                     ))}
                 </div>
@@ -50,7 +50,7 @@ function Summary(props) {
                 {add.map((add) => (
                     <div className='serviceDetails'>
                         <p>{add[0].type}</p>
-                        <span>+{add[0].price}</span>
+                        <span>+${add[0].price}</span>
                     </div>
                 ))}
             </div>

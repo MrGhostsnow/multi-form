@@ -12,6 +12,22 @@
     margin-left: 15rem;
 }
 
+@media screen and (max-width: 768px) {
+    .containerForm {
+        width: 400px;
+        margin-left: 18rem;
+    }
+}
+
+@media screen and (max-width: 542px) {
+    .containerForm {
+        margin-left: 0rem;
+        width: 300px;
+        align-items: center;
+        text-align: center;
+    }
+}
+
 .containerForm>h1 {
     font-family: 'Ubuntu', sans-serif;
     color: hsl(213, 96%, 18%);

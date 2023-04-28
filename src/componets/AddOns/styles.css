@@ -23,6 +23,22 @@
     font-size: 400;
 }
 
+@media screen and (min-width: 768px) {
+    .containerAddOns {
+        width: 400px;
+        margin-left: 18rem;
+    }
+}
+
+@media screen and (max-width: 542px) {
+    .containerAddOns {
+        width: 300px;
+        margin-left: 0rem;
+        align-items: center;
+        text-align: center;
+    }
+}
+
 .containerCheckbox {
     display: flex;
     flex-direction: column;
@@ -47,12 +63,38 @@
     height: 18px;
 }
 
+@media screen and (max-width: 768px) {
+    .sectionCheckbox>input {
+        margin-left: 1rem;
+    }
+}
+
+@media screen and (max-width: 542px) {
+    .sectionCheckbox {
+        width: 325px;
+        text-align: left;
+    }
+}
+
+
 
 .labeladd {
     display: flex;
     flex-direction: column;
     margin-left: 1rem;
-    width: 200px;
+    width: 250px;
+}
+
+@media screen and (max-width: 768px) {
+    .labeladd {
+        width: 250px;
+    }
+}
+
+@media screen and (max-width: 542px) {
+    .labeladd {
+        width: 450px;
+    }
 }
 
 .titleadd {
@@ -75,7 +117,23 @@
     margin-left: 7rem;
     font-weight: 500;
     width: 100px;
+    margin-right: 1rem;
+
 }
+
+@media screen and (max-width: 768px) {
+    .price {
+        margin-right: 1rem;
+    }
+}
+
+@media screen and (max-width: 542px) {
+    .price {
+        margin-right: 0.5rem;
+        margin-left: 0;
+    }
+}
+
 
 .addSelected {
     background-color: hsl(217, 100%, 97%);
