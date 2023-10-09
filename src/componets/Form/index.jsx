@@ -45,7 +45,6 @@ function Form(props) {
         setValidEmail(true);
       } else {
         setValidEmail(false);
-        setFormError("O endereço de e-mail não é válido.");
       }
     } catch (error) {
       console.error(error);
@@ -76,9 +75,9 @@ function Form(props) {
     e.preventDefault();
 
     if (name && validEmail && validPhone) {
-      console.log("success");
+      props.showForm(false);
     } else {
-      setFormError("Preencha todos os campos corretamente.");
+      setFormError("Complete all the fields correctly.");
       console.log(validEmail, validPhone);
     }
   }
